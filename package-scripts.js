@@ -1,11 +1,18 @@
-const { series, rimraf, mkdirp } = require('nps-utils');
+const { series, rimraf, mkdirp, concurrent } = require('nps-utils');
+const microUiConfig = require('./microui.config.js');
 
 module.exports = {
   scripts: {
     default: 'nps local',
     local: {
       default: 'nodemon --watch src --exec npx nps local.serve',
-      serve: series('npx nps bundle', 'babel-node src/localServer.js')
+      serve: series('npx nps bundle', concurrent({ stories: 'npx nps local.stories', server: 'npx nps local.lambda' })),
+      lambda: "babel-node --extensions '.ts,.tsx,.js' --config-file ./babel.lambda.config.json src/localServer.js",
+      stories: 'npx nps storybook',
+    },
+    storybook: {
+      default: `npx start-storybook -p ${microUiConfig.storybook.port}`,
+      build: 'npx build-storybook',
     },
     clean: {
       description: 'Deletes the various generated folders',
@@ -14,13 +21,13 @@ module.exports = {
     build: {
       description: 'Builds Micro UI for lambda deployment',
       default: series('npx nps clean', 'npx nps build.routes', 'npx nps build.microui'),
-      routes: series(mkdirp('.lambda'), `npx babel src --extensions '.ts,.tsx,.js' --config-file ./babel.lambda.config.json --out-dir ./.lambda`),
+      routes: `npx babel src --extensions '.ts,.tsx,.js' --config-file ./babel.lambda.config.json --out-dir ./.lambda`,
       microui: series(mkdirp('.microui'), `npx webpack --config ./webpack.config.js`),
     },
     bundle: {
       description: 'Bundles Micro UI for lambda deployment',
       default: series(rimraf('./microui.zip'), 'npx nps build'),
-      zip: 'zip -r microui.zip microui.config.js .lambda .microui node_modules'
+      zip: 'zip -r microui.zip microui.config.js .lambda .microui node_modules',
     },
   },
 };

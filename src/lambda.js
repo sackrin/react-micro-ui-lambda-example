@@ -7,14 +7,6 @@ exports.handler = async (event, context) => {
   const microUIConfig = require(path.join(process.cwd(), 'microui.config.js'));
   // Create the Lambda
   const { route, strap, boot } = createLambda(event, context, { profile: process.env.PROFILE || 'local', config: microUIConfig });
-  // Add custom routes here
-  route('/testing', 'GET', (event, context) => ({
-    headers: {
-      'content-type': 'application/json'
-    },
-    statusCode: 200,
-    body: JSON.stringify({ helloWorld: true }),
-  }));
   // SERVER SIDE RENDERED COMPONENTS
   // Strap in the front end components
   strap('ProfileProgress', ProfileProgress);

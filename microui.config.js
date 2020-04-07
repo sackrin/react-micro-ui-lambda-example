@@ -3,7 +3,7 @@ const path = require('path');
 const port = 8330;
 
 module.exports = {
-  name: 'exampleMicroUI',
+  name: 'compareTheMarketWizard',
   assets: {
     target: 'umd',
     url: 'http://localhost:9000',
@@ -11,6 +11,9 @@ module.exports = {
   manifest: {
     filepath: path.join(process.cwd(), '.microui', 'manifest.json'),
     entry: 'main.js',
+  },
+  storybook: {
+    port: 6006
   },
   api: {
     url: 'http://localhost:9000',

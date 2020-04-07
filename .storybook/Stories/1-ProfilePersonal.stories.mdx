@@ -1,0 +1,15 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import ProfilePersonal from '../Components/ProfilePersonal';
+
+<Meta title="Profile/Personal" component={ProfilePersonal} />
+
+# Personal Details
+
+With `MDX` we can define a story for `Checkbox` right in the middle of our
+markdown documentation.
+
+<Preview>
+  <Story name="Default Form">
+    <ProfilePersonal name="Hello" />
+  </Story>
+</Preview>
