@@ -14,9 +14,10 @@ module.exports = {
       default: `npx start-storybook -p ${microUiConfig.storybook.port}`,
       build: 'npx build-storybook',
     },
-    clean: {
-      description: 'Deletes the various generated folders',
-      script: series(rimraf('./.lambda'), rimraf('./.microui')),
+    standards: {
+      default: series('npx nps standards.unit', 'npx nps standards.integration'),
+      unit: 'npx jest',
+      integration: 'npx cypress run'
     },
     build: {
       description: 'Builds Micro UI for lambda deployment',
@@ -28,6 +29,10 @@ module.exports = {
       description: 'Bundles Micro UI for lambda deployment',
       default: series(rimraf('./microui.zip'), 'npx nps build'),
       zip: 'zip -r microui.zip microui.config.js .lambda .microui node_modules',
+    },
+    clean: {
+      description: 'Deletes the various generated folders',
+      script: series(rimraf('./.lambda'), rimraf('./.microui')),
     },
   },
 };

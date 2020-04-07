@@ -1,0 +1,9 @@
+{
+  "baseUrl": "http://localhost:6006",
+  "testFiles": "**/*.{feature,features}",
+  "video": false,
+  "chromeWebSecurity": false,
+  "env": {
+    "RETRIES": 4
+  }
+}
