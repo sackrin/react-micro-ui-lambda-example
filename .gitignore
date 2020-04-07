@@ -1,0 +1,17 @@
+# editors
+.idea
+
+# production
+.lambda
+.microui
+
+# built assets
+microui.zip
+
+# dependencies
+/node_modules
+
+# misc
+.DS_Store
+flow-coverage
+npm-debug.log*

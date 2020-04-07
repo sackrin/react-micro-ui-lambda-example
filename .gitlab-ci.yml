@@ -1,0 +1,69 @@
+image: node:latest
+
+stages:
+  - assets
+  - build
+  - deploy
+
+variables:
+  AWS_DEFAULT_REGION: <ADD REGION ID>
+  MICRO_UI_BUCKET_NAME: <ADD MICRO UI STATIC ASSET S3 BUCKET NAME>
+  MICRO_UI_DISTRIBIUTION_ID: <ADD CLOUDFRONT DISTRUTION ID>
+  LAMBDA_FUNCTION_NAME: <ADD LAMBDA FUNCTION NAME>
+
+build_assets:
+  stage: assets
+  script:
+    - npm install
+    - npx nps bundle
+  artifacts:
+    paths:
+      - .lambda/
+      - .microui/
+
+build_lambda:
+  image: "node:latest"
+  stage: build
+  dependencies:
+    - "build_assets"
+  before_script:
+    - apt-get update
+    - apt-get install -y zip unzip
+  script:
+    - npm ci --prod
+    - npx nps bundle.zip
+  artifacts:
+    paths:
+      - microui.zip
+
+deploy_microui:
+  image: "python:latest"
+  stage: deploy
+  dependencies:
+    - "build_assets"
+  before_script:
+    - pip install awscli
+  script:
+    - aws s3 rm s3://${MICRO_UI_BUCKET_NAME} --recursive
+    - aws s3 cp .microui s3://${MICRO_UI_BUCKET_NAME} --recursive
+    - aws cloudfront create-invalidation --distribution-id ${MICRO_UI_DISTRIBIUTION_ID} --paths "/*"
+  artifacts:
+    paths:
+      - .microui/
+  environment:
+    name: ${CI_COMMIT_REF_SLUG}
+    url: http://${MICRO_UI_BUCKET_NAME}.s3-website.${AWS_DEFAULT_REGION}.amazonaws.com
+
+deploy_lambda:
+  image: "python:latest"
+  stage: deploy
+  dependencies:
+    - "build_lambda"
+  before_script:
+    - pip install awscli
+  script:
+    - aws lambda update-function-code --publish --function-name ${LAMBDA_FUNCTION_NAME} --zip-file fileb://microui.zip
+  artifacts:
+    paths:
+      - microui.zip
+
