@@ -1,11 +1,11 @@
 import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import ProfileAddress from "../ProfileAddress";
+import { ProfileRegister } from "../ProfileRegister";
 
-describe('ProfileAddress', () => {
+describe('ProfileRegister', () => {
   it('can render the basic component', () => {
-    const fakeComponent = shallow(<ProfileAddress className="exampleClassName" />);
+    const fakeComponent = shallow(<ProfileRegister className="exampleClassName" />);
     expect(fakeComponent).to.have.length(1);
     expect(fakeComponent.hasClass('exampleClassName')).to.equal(true);
   });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import ProfileProgress from "../ProfileProgress";
+import { ProfileProgress } from "../ProfileProgress";
 
 describe('ProfileProgress', () => {
   it('can render the basic component', () => {

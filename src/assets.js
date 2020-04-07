@@ -2,18 +2,13 @@ import loadable from '@loadable/component';
 import { hydrate, render } from "react-dom";
 import { renderComponent, hydrateComponent, childComponent } from '@sackrin/react-micro-ui/lib/Helpers';
 
+// Enable code splitting by returning with loadable
 const ProfileProgress = loadable(() => import('./Components/ProfileProgress'));
-const ProfilePersonal = loadable(() => import('./Components/ProfilePersonal'));
-const ProfileAddress = loadable(() => import('./Components/ProfileAddress'));
+const ProfileRegister = loadable(() => import('./Components/ProfileRegister'));
 
 export const Components = {
   ProfileProgress,
-  ProfilePersonal,
-  ProfileAddress
-};
-
-export const Helpers = {
-  TestHelper: () => { console.log('Hello World!'); }
+  ProfileRegister,
 };
 
 export const Hydrate = hydrateComponent(hydrate, Components);
