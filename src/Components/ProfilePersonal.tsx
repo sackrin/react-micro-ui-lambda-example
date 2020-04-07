@@ -1,5 +1,10 @@
 import React from 'react';
+import classnames from 'classnames';
 
-const ProfilePersonal = () => (<div>Profile Personal</div>);
+type Props = {
+  className?: string;
+};
+
+const ProfilePersonal = ({ className = '' }: Props) => <div className={classnames(className)}>Profile Personal</div>;
 
 export default ProfilePersonal;
