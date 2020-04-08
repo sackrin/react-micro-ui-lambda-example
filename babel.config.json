@@ -3,7 +3,13 @@
     [
       "@babel/preset-env",
       {
-        "targets": ["Chrome >= 52", "FireFox >= 44", "Safari >= 7", "Explorer 11", "last 4 Edge versions"]
+        "targets": [
+          "Chrome >= 52",
+          "FireFox >= 44",
+          "Safari >= 7",
+          "Explorer 11",
+          "last 4 Edge versions"
+        ]
       }
     ],
     "@babel/preset-react",
@@ -17,6 +23,19 @@
         "alias": {
           "src": "./src",
           "node_modules": "./node_modules"
+        }
+      }
+    ],
+    [
+      "babel-plugin-transform-imports",
+      {
+        "@material-ui/core": {
+          "transform": "@material-ui/core/esm/${member}",
+          "preventFullImport": true
+        },
+        "@material-ui/icons": {
+          "transform": "@material-ui/icons/esm/${member}",
+          "preventFullImport": true
         }
       }
     ],
