@@ -25,6 +25,7 @@ export const useStyles: StyleClasses = makeStyles(() => ({
 }));
 
 export const SimpleField = ({
+  label,
   value,
   error,
   showError = false,
@@ -58,12 +59,14 @@ export const SimpleField = ({
   return (
     <TextField
       type={type}
+      label={label}
       value={buffered}
       fullWidth
       error={showError && !!error}
       onChange={onUpdate}
       margin="normal"
       variant="outlined"
+      data-simple-field={label}
       className={classnames('test-simpleField', classes.field, className)}
       {...props}
     />

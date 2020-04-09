@@ -25,6 +25,7 @@ export const useStyles: StyleClasses = makeStyles(() => ({
 }));
 
 export const SimpleDropdown = ({
+  label,
   value,
   error,
   showError = false,
@@ -42,6 +43,7 @@ export const SimpleDropdown = ({
   return (
     <TextField
       select
+      label={label}
       value={value}
       error={showError && !!error}
       fullWidth

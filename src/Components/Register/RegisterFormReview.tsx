@@ -59,7 +59,7 @@ const RegisterFormReview = ({ className = '' }: Props) => {
             </SimpleValue>
           </Grid>
           <Grid item xs={4}>
-            <SimpleValue label="Street Name">
+            <SimpleValue label="Street Type">
               {address.data.streetType}
             </SimpleValue>
           </Grid>

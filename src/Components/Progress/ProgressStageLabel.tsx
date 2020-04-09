@@ -9,7 +9,6 @@ type Props = {
 
 type StyleClasses = () => {
   label: string;
-  labelActive: string;
 };
 
 export const useStyles: StyleClasses = makeStyles(() => ({
@@ -17,9 +16,6 @@ export const useStyles: StyleClasses = makeStyles(() => ({
     position: 'absolute',
     bottom: '-1.2rem',
     right: 0,
-  },
-  labelActive: {
-    opacity: '0.7',
   },
 }));
 
@@ -30,7 +26,6 @@ const ProgressStageLabel = ({ children, className = '' }: Props) => {
       className={classnames(
         'test-progressStageLabel',
         classes.label,
-        classes.labelActive,
         className,
       )}
     >

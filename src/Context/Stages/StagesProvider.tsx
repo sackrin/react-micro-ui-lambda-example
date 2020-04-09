@@ -31,8 +31,6 @@ const StagesProvider = ({ component, children }: Props) => {
     onStages(state.stages, state.current);
   }, [dispatch, state.stages]);
 
-  console.log(state);
-
   return <Provider value={{ ...state, dispatch }}>{children}</Provider>;
 };
 
