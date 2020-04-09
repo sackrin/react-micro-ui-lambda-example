@@ -103,7 +103,9 @@ export default ProfileRegister;
 
 ## Embedding via Server Side Rendering
 
-Micro frontend components can be embedded into server rendered applications (ie PHP or nodeJS) to improve SEO and accessibility.
+Micro frontend components can be embedded into server rendered applications (ie PHP or nodeJS) to improve SEO and accessibility. Components will be returned as static HTML along with JS to load in bootstrap.js and hydrate the component after page load with any client-side functionality. There is no need for the macro frontend to include bootstrap or any other dependencies for components to be successfully rendered.
+
+It is safe to import multiple SSR components within a single page at one time as assets such as bootstrap.js will only be detected and loaded only once.
 
 ### Embedding via GET request
 
@@ -116,4 +118,3 @@ To embed using a GET request add the component name to the end of the micro fron
 To embed using a POST request add the component name to the end of the micro frontend URL and provide your props within the request body as raw JSON
 
 ```POST http://localhost:9000/ProfileRegister```
-
