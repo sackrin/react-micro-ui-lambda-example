@@ -116,4 +116,4 @@ To embed using a GET request add the component name to the end of the micro fron
 To embed using a POST request add the component name to the end of the micro frontend URL and provide your props within the request body as raw JSON
 
 ```POST http://localhost:9000/ProfileRegister```
-`****``****`
+
