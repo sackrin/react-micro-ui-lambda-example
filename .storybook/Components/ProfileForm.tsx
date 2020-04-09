@@ -6,7 +6,6 @@ const ProfileForm = <P extends {}>(props: P) => {
   const [stages, setStages] = useState([]);
   const onStages = useCallback(
     (stages, current) => {
-      console.log(current, stages);
       setCurrent(current);
       setStages(stages);
     },

@@ -12,3 +12,55 @@ The following form uses the ProfileProgress and ProfileRegister components expor
     <ProfileForm />
   </Story>
 </Preview>
+
+## React Micro UI Hooks
+
+To help embedding micro frontend applications the react-micro-ui-hooks library provides hooks and components to access individual micro frontend components. To install within your macro frontend run the following npm command.
+
+```npm i --save @sackrin/react-micro-ui-hooks```
+
+## Progress Bar Component
+
+The following react snippet can be used to embed the progress bar component within a macro frontend
+
+```
+import React, { useCallback, useState } from 'react';
+import { MicroUIComponent } from '@sackrin/react-micro-ui-hooks/lib/Components';
+
+const ProfileProgress = ({ current, stages }) => (
+  <MicroUIComponent
+    microUi={{
+      url: 'http://localhost:9000',
+      library: 'exampleProfileMicroFrontend',
+      name: 'ProfileProgress',
+    }}
+    current={current}
+    stages={stages}
+  />
+);
+
+export default ProfileProgress;
+```
+
+## Register Form Component
+
+The following react snippet can be used to embed the register form component within a macro frontend
+
+```
+import React, { useCallback, useState } from 'react';
+import { MicroUIComponent } from '@sackrin/react-micro-ui-hooks/lib/Components';
+
+const ProfileRegister = ({ onStages, onRegister }) => (
+  <MicroUIComponent
+    microUi={{
+      url: 'http://localhost:9000',
+      library: 'exampleProfileMicroFrontend',
+      name: 'ProfileRegister',
+    }}
+    onStages={onStages}
+    onRegister={onRegister}
+  />
+);
+
+export default ProfileRegister;
+```
