@@ -21,7 +21,7 @@ const ProfileForm = <P extends {}>(props: P) => {
         <MicroUIComponent
           microUi={{
             url: 'http://localhost:9000',
-            library: 'compareTheMarketWizard',
+            library: 'exampleProfileMicroFrontend',
             name: 'ProfileProgress',
           }}
           current={current}
@@ -31,7 +31,7 @@ const ProfileForm = <P extends {}>(props: P) => {
         <MicroUIComponent
           microUi={{
             url: 'http://localhost:9000',
-            library: 'compareTheMarketWizard',
+            library: 'exampleProfileMicroFrontend',
             name: 'ProfileRegister',
           }}
           onStages={onStages}

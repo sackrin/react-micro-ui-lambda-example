@@ -3,7 +3,7 @@ const path = require('path');
 const port = 8330;
 
 module.exports = {
-  name: 'compareTheMarketWizard',
+  name: 'exampleProfileMicroFrontend',
   assets: {
     target: 'umd',
     url: 'http://localhost:9000',
