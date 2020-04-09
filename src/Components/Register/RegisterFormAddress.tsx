@@ -18,7 +18,10 @@ const RegisterFormAddress = ({ className = '' }: Props) => {
     [dispatch],
   );
   return (
-    <div className={classnames('test-registerFormAddress', className)}>
+    <div
+      data-register-form="Address"
+      className={classnames('test-registerFormAddress', className)}
+    >
       <FormHeading>My Address</FormHeading>
       <Grid container={true} spacing={2}>
         <Grid item xs={4}>

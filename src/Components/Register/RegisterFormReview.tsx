@@ -22,7 +22,10 @@ const RegisterFormReview = ({ className = '' }: Props) => {
   const { profile, address } = useContext(RegisterContext);
   const classes = useStyles();
   return (
-    <div className={classnames('test-registerFormReview', className)}>
+    <div
+      data-register-form="Review"
+      className={classnames('test-registerFormReview', className)}
+    >
       <FormHeading>Review Details</FormHeading>
       <FormContainer className={classes.personal}>
         <Grid container={true} spacing={2}>

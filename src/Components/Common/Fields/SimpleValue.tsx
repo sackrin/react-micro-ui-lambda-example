@@ -33,7 +33,7 @@ const SimpleValue = ({ label, children, className = '' }: Props) => {
         {label}
       </Typography>
       <Typography className={classnames('test-simpleValueText', classes.value)}>
-        {children}
+        {children || '-'}
       </Typography>
     </div>
   );

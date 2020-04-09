@@ -23,3 +23,30 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+
+Cypress.Commands.add('iframeEl', { prevSubject: 'element' }, ($iframe, selector) => {
+  let count = 0;
+  Cypress.log({
+    name: 'iframe',
+    consoleProps() {
+      return {
+        iframe: $iframe,
+      };
+    },
+  });
+  const recursiveChecker = (resolve) => () => {
+    const iframeChild = $iframe.contents().find(selector);
+    if (iframeChild.length > 0) {
+      resolve($iframe.contents().find(selector));
+    } else if (count === 10) {
+      resolve(undefined);
+    } else {
+      count = count + 1;
+      setTimeout(recursiveChecker(resolve), 500);
+    }
+  };
+  return new Cypress.Promise(resolve => {
+    recursiveChecker(resolve)();
+  });
+});

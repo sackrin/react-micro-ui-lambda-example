@@ -15,7 +15,10 @@ const RegisterFormProfile = ({ className = '' }: Props) => {
     [dispatch],
   );
   return (
-    <div className={classnames('test-registerFormProfile', className)}>
+    <div
+      data-register-form="Profile"
+      className={classnames('test-registerFormProfile', className)}
+    >
       <FormHeading>My Details</FormHeading>
       <Grid container={true} spacing={2}>
         <Grid item xs={6}>

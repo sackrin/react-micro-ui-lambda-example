@@ -50,6 +50,7 @@ export const SimpleDropdown = ({
       onChange={onUpdate}
       margin="normal"
       variant="outlined"
+      data-simple-dropdown={label}
       className={classnames('test-simpleDropdown', classes.field, className)}
       {...props}
     >
