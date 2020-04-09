@@ -2,7 +2,10 @@ import React, { useContext, useCallback } from 'react';
 import classnames from 'classnames';
 import { Button } from '@material-ui/core';
 import {
-  getNextStage, getRegisterStateByStage, RegisterContext,
+  getNextStage,
+  getRegisterStateByStage,
+  RegisterContext,
+  setRegisterIsDirtyAction,
   setStagesCurrentAction,
   StagesContext,
 } from '../../Context';
@@ -19,9 +22,16 @@ const RegisterButtonContinue = ({ className = '' }: Props) => {
   const onClick = useCallback(() => {
     if (data && data.isValid && next && next.stage) {
       dispatch(setStagesCurrentAction(next.stage));
+      registerState.dispatch(
+        setRegisterIsDirtyAction(current.toLowerCase(), true),
+      );
+    } else if (data) {
+      registerState.dispatch(
+        setRegisterIsDirtyAction(current.toLowerCase(), true),
+      );
     }
-  }, [dispatch, data, next]);
-  return next && next.stage !== 'REVIEW' ? (
+  }, [registerState, dispatch, data, next]);
+  return next ? (
     <Button
       variant="contained"
       color="primary"

@@ -3,12 +3,24 @@
 ```js
 import React from 'react';
 import classnames from 'classnames';
+import { makeStyles } from '@material-ui/core';
 
 type Props = {
-  className?: string,
+  children: any;
+  className?: string;
 };
 
-const Example = ({ className = '' }: Props) => <div className={classnames('test-example', className)}>Example</div>;
+type StyleClasses = () => {};
+
+export const useStyles: StyleClasses = makeStyles(() => ({}));
+
+const Example = ({ children, className = '' }: Props) => {
+  const classes = useStyles();
+  return (
+    <div className={classnames('test-example', className)}>{children}</div>
+  );
+};
 
 export default Example;
+
 ```

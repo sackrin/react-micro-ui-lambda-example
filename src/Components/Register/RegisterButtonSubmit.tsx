@@ -4,7 +4,6 @@ import { Button } from '@material-ui/core';
 import {
   getLastStage,
   getNextStage,
-  getRegisterStateByStage,
   RegisterContext,
   StagesContext,
 } from '../../Context';
@@ -17,15 +16,12 @@ const RegisterButtonSubmit = ({ className = '' }: Props) => {
   const { current, stages } = useContext(StagesContext);
   const registerState = useContext(RegisterContext);
   const { doSubmit } = registerState;
-  const data = getRegisterStateByStage(registerState, current);
   const last = getLastStage(stages, current);
   const next = getNextStage(stages, current);
   const onClick = useCallback(() => {
-    if (data && data.isValid) {
-      doSubmit();
-    }
-  }, [data, doSubmit, next]);
-  return next && next.stage === 'REVIEW' && last ? (
+    doSubmit();
+  }, [registerState, doSubmit, next]);
+  return !next && last ? (
     <Button
       variant="contained"
       color="primary"

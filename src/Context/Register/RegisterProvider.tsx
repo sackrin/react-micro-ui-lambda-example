@@ -17,7 +17,7 @@ type Props = {
     profile?: RegisterProfileData;
     address?: RegisterAddressData;
     onChange?: (profile: RegisterProfile, address: RegisterAddress, isValid: boolean) => void;
-    onSubmit?: (profile: RegisterProfile, address: RegisterAddress) => void;
+    onRegister?: (profile: RegisterProfile, address: RegisterAddress) => void;
   };
   children: JSX.Element;
 };
@@ -61,10 +61,10 @@ const RegisterProvider = ({ component, children }: Props) => {
   }, [state.isValid, state.profile, state.address]);
 
   const doSubmit = useCallback(() => {
-    // Extract the onSubmit callback
-    const { onSubmit = (profile, address) => {} } = component;
-    // Trigger the provided onSubmit callback
-    onSubmit(state.profile, state.address);
+    // Extract the onRegister callback
+    const { onRegister = (profile, address) => {} } = component;
+    // Trigger the provided onRegister callback
+    onRegister(state.profile, state.address);
   }, []);
 
   return <Provider value={{ ...state, doSubmit, dispatch }}>{children}</Provider>;

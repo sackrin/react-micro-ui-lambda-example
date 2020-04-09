@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { StagesContext } from '../../Context/Stages';
 import RegisterFormProfile from './RegisterFormProfile';
 import RegisterFormAddress from './RegisterFormAddress';
+import RegisterFormReview from './RegisterFormReview';
 import RegisterButtonSubmit from './RegisterButtonSubmit';
 import RegisterButtonContinue from './RegisterButtonContinue';
 import RegisterButtonBack from './RegisterButtonBack';
@@ -39,6 +40,7 @@ const RegisterForm = ({ className = '' }: Props) => {
       <div className="test-registerFormFields">
         {current === 'PROFILE' && <RegisterFormProfile />}
         {current === 'ADDRESS' && <RegisterFormAddress />}
+        {current === 'REVIEW' && <RegisterFormReview />}
       </div>
       <div className={classnames('test-registerFormActions', classes.actions)}>
         <div className={classes.actionsInner}>

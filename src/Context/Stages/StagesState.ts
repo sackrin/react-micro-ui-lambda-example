@@ -1,4 +1,4 @@
-import { setStageAsViewed } from "./Helpers";
+import { setStageAsViewed, setStageAsSubmitted } from "./Helpers";
 import type { StagesContextState } from './Types/StagesContextState';
 import type { StagesCurrentAction } from "./Actions/setStagesCurrentAction";
 import type { StageViewedAction } from "./Actions/setStageViewedAction";
@@ -13,7 +13,7 @@ const StagesState = (state: StagesContextState, action: StagesCurrentAction | St
     case 'SET_STAGES_STAGE_VIEWED': {
       return {
         ...state,
-        stages: setStageAsViewed(state.stages, action.stage),
+        stages: setStageAsSubmitted(setStageAsViewed(state.stages, action.stage), action.stage),
       };
     }
     default:

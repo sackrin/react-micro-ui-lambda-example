@@ -4,10 +4,12 @@ import type { SetRegisterAddress } from "./Actions/setRegisterAddressAction";
 import type { SetRegisterIsValid } from "./Actions/setRegisterIsValidAction";
 import type { RegisterProfileValueAction } from "./Actions/setRegisterProfileValueAction";
 import type { RegisterAddressValueAction } from "./Actions/setRegisterAddressValueAction";
+import type { RegisterIsDirtyAction } from "./Actions/setRegisterIsDirtyAction";
 
 const RegisterState = (state: RegisterContextState, action: | SetRegisterAddress
   | SetRegisterIsValid
   | SetRegisterProfile
+  | RegisterIsDirtyAction
   | RegisterProfileValueAction
   | RegisterAddressValueAction) => {
   switch (action.type) {
@@ -15,6 +17,14 @@ const RegisterState = (state: RegisterContextState, action: | SetRegisterAddress
       return {
         ...state,
         isValid: action.isValid,
+      };
+    case 'SET_REGISTER_ISDIRTY':
+      return {
+        ...state,
+        [action.property]: {
+          ...state[action.property],
+          isDirty: action.isDirty
+        }
       };
     case 'SET_REGISTER_PROFILE':
       return {

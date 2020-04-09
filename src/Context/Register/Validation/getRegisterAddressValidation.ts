@@ -7,7 +7,7 @@ export const rules = {
   streetNumber: 'required|numeric',
   streetName: 'required|string',
   streetType: 'required|in:Cl,Ct,St,Pl,Ave',
-  suburb: 'required|alpha_num',
+  suburb: 'required|string',
   postcode: 'required|numeric|between:800,8000'
 };
 

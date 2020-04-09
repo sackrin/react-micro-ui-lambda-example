@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 import classnames from 'classnames';
 import { Grid } from '@material-ui/core';
-import { SimpleField, SimpleDropdown } from '../Common/Fields';
+import { SimpleField, SimpleDropdown, FormHeading } from '../Common';
 import {
   RegisterContext,
   setRegisterAddressValueAction,
@@ -19,12 +19,14 @@ const RegisterFormAddress = ({ className = '' }: Props) => {
   );
   return (
     <div className={classnames('test-registerFormAddress', className)}>
+      <FormHeading>My Address</FormHeading>
       <Grid container={true} spacing={2}>
         <Grid item xs={4}>
           <SimpleField
             label="Street Number"
             onChange={onValue('streetNumber')}
             value={address.data.streetNumber}
+            showError={address.isDirty}
             error={address.errors?.streetNumber}
           />
         </Grid>
@@ -33,6 +35,7 @@ const RegisterFormAddress = ({ className = '' }: Props) => {
             label="Street Name"
             onChange={onValue('streetName')}
             value={address.data.streetName}
+            showError={address.isDirty}
             error={address.errors?.streetName}
           />
         </Grid>
@@ -48,6 +51,7 @@ const RegisterFormAddress = ({ className = '' }: Props) => {
               { value: 'Ave', label: 'Ave' },
             ]}
             value={address.data.streetType}
+            showError={address.isDirty}
             error={address.errors?.streetType}
           />
         </Grid>
@@ -58,6 +62,7 @@ const RegisterFormAddress = ({ className = '' }: Props) => {
             label="Suburb"
             onChange={onValue('suburb')}
             value={address.data.suburb}
+            showError={address.isDirty}
             error={address.errors?.suburb}
           />
         </Grid>
@@ -66,6 +71,7 @@ const RegisterFormAddress = ({ className = '' }: Props) => {
             label="Postcode"
             onChange={onValue('postcode')}
             value={address.data.postcode}
+            showError={address.isDirty}
             error={address.errors?.postcode}
           />
         </Grid>
