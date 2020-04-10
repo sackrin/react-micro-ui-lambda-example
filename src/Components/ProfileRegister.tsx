@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { withMui } from '../Helpers';
+import { withMui, getDefaultTheme } from '@sackrin/react-micro-ui-mui';
 import { RegisterForm } from './Register';
 import { withProviders, RegisterProvider, StagesProvider } from '../Context';
 import { StagesStage } from '../Context/Stages/Types/StagesStage';
@@ -29,7 +29,7 @@ export const ProfileRegister = ({ className = '' }: Props) => (
   </div>
 );
 
-export const hasMui = withMui(ProfileRegister, 'CTM');
+export const hasMui = withMui(ProfileRegister, getDefaultTheme(), 'CTM');
 
 export const hasProviders = withProviders(hasMui, [
   RegisterProvider,

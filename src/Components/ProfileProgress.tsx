@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { withMui } from '../Helpers';
+import { withMui, getDefaultTheme } from '@sackrin/react-micro-ui-mui';
 import {
   Progress,
   ProgressStageProfile,
@@ -25,6 +25,6 @@ export const ProfileProgress = ({ current, stages, className = '' }: Props) => (
   </div>
 );
 
-export const hasMui = withMui(ProfileProgress, 'CTM');
+export const hasMui = withMui(ProfileProgress, getDefaultTheme(), 'CTM');
 
 export default hasMui;
