@@ -26,7 +26,7 @@
     "@material-ui/core": "^4.9.9",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.9.6",
-    "@sackrin/react-micro-ui": "^0.2.0",
+    "@sackrin/react-micro-ui": "^0.2.1",
     "@sackrin/react-micro-ui-mui": "0.0.3",
     "@sackrin/react-micro-ui-hooks": "0.0.5",
     "classnames": "^2.2.6",
