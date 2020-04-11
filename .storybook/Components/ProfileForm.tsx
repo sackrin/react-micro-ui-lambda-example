@@ -2,15 +2,6 @@ import React, { useCallback, useState } from 'react';
 import { MicroUIComponent } from '@sackrin/react-micro-ui-hooks/lib/Components';
 
 const ProfileForm = <P extends {}>(props: P) => {
-  const [current, setCurrent] = useState('');
-  const [stages, setStages] = useState([]);
-  const onStages = useCallback(
-    (stages, current) => {
-      setCurrent(current);
-      setStages(stages);
-    },
-    [setCurrent, setStages],
-  );
   const onRegister = useCallback((profile, address) => {
     console.log('REGISTERED', profile, address);
   }, []);
@@ -23,8 +14,6 @@ const ProfileForm = <P extends {}>(props: P) => {
             library: 'exampleProfileMicroFrontend',
             name: 'ProfileProgress',
           }}
-          current={current}
-          stages={stages}
         />
         <div style={{ display: 'block', height: '3.5rem' }} />
         <MicroUIComponent
@@ -33,7 +22,6 @@ const ProfileForm = <P extends {}>(props: P) => {
             library: 'exampleProfileMicroFrontend',
             name: 'ProfileRegister',
           }}
-          onStages={onStages}
           onRegister={onRegister}
         />
       </div>
