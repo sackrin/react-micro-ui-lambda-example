@@ -11,6 +11,7 @@ In order to run this project locally you will need to clone down this repository
 - to run locally ```npx nps local```
 - to run code standards ```npx nps standards``` after running previous step
 - to build for deployment ```npx nps build```
+- to run functional test suite ```npx cypress open```
 
 ### Deployment
 
