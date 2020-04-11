@@ -63,15 +63,13 @@ The following react snippet can be used to embed the progress bar component with
 import React, { useCallback, useState } from 'react';
 import { MicroUIComponent } from '@sackrin/react-micro-ui-hooks/lib/Components';
 
-const ProfileProgress = ({ current, stages }) => (
+const ProfileProgress = () => (
   <MicroUIComponent
     microUi={{
       url: 'http://localhost:9000',
       library: 'exampleProfileMicroFrontend',
       name: 'ProfileProgress',
     }}
-    current={current}
-    stages={stages}
   />
 );
 
