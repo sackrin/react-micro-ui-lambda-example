@@ -5,10 +5,15 @@ module.exports = {
   scripts: {
     default: 'nps local',
     local: {
-      default: 'nodemon --watch src --exec npx nps local.serve',
-      serve: series('npx nps bundle', concurrent({ stories: 'npx nps local.stories', server: 'npx nps local.lambda' })),
-      lambda: "babel-node --extensions '.ts,.tsx,.js' --config-file ./babel.lambda.config.json src/localServer.js",
-      stories: 'npx nps storybook',
+      description: 'Scripts to run the micro frontend locally for development and demonstration',
+      default: concurrent({ storybook: 'npx nps local.storybook', microui: 'npx nps local.microui', server: 'npx nps local.lambda' }),
+      storybook: 'npx nps storybook',
+      microui: series(mkdirp('.microui'), "npx webpack --watch --config ./webpack.config.js"),
+      lambda: {
+        default: 'npx nps local.lambda.watch',
+        watch: 'nodemon --watch src --exec npx nps local.lambda.build',
+        build: "babel-node --extensions '.ts,.tsx,.js' --config-file ./babel.lambda.config.json src/localServer.js"
+      }
     },
     storybook: {
       default: `npx start-storybook -p ${microUiConfig.storybook.port}`,
