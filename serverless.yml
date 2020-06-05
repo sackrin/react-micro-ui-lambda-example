@@ -1,0 +1,23 @@
+service: example-micro-ui
+
+frameworkVersion: ">=1.4.0 <2.0.0"
+
+plugins:
+  - serverless-finch
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+custom:
+  client:
+    bucketName: example-micro-ui-assets
+    distributionFolder: .microui
+    indexDocument: manifest.json
+
+functions:
+  microUI:
+    handler: .lambda/lambda.handler
+    events:
+      - http: GET bootstrap.js
+      - http: GET ExampleComponent
