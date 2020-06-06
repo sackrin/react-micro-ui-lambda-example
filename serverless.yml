@@ -19,5 +19,5 @@ functions:
   microUI:
     handler: .lambda/lambda.handler
     events:
-      - http: GET bootstrap.js
-      - http: GET ExampleComponent
+      - httpApi: GET /bootstrap.js
+      - httpApi: GET /ExampleComponent

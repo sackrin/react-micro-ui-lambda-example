@@ -4,6 +4,7 @@
 # production
 .lambda
 .microui
+.serverless
 
 # built assets
 microui.zip

@@ -35,6 +35,18 @@ module.exports = {
       default: series(rimraf('./microui.zip'), 'npx nps build'),
       zip: 'zip -r microui.zip microui.config.js .lambda .microui node_modules',
     },
+    deploy: {
+      description: 'Deploys the lambda to AWS',
+      default: series('npx nps build', 'npx nps deploy.service', 'npx nps deploy.client'),
+      service: 'npx serverless deploy',
+      client: 'npx serverless client deploy',
+    },
+    destroy: {
+      description: 'Destroys the lambda micro UI',
+      default: series('npx nps destroy.service', 'npx nps destroy.client'),
+      service: 'npx serverless remove',
+      client: 'npx serverless client remove',
+    },
     clean: {
       description: 'Deletes the various generated folders',
       script: series(rimraf('./.lambda'), rimraf('./.microui')),
