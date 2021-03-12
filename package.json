@@ -89,7 +89,7 @@
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
     "react-app-polyfill": "^1.0.6",
-    "react-dev-utils": "^9.1.0",
+    "react-dev-utils": "^11.0.4",
     "react-docgen-typescript-loader": "^3.7.2",
     "sinon": "^7.5.0",
     "sinon-chai": "^3.3.0",
